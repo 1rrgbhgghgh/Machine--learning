@@ -1,0 +1,29 @@
+import numpy as np
+import matplotlib.pyplot as plt
+#pizza sizes and prices
+sizes=np.array([11,12,15,16,19])
+prices=([9,10,14,18,20])
+
+#linear regression function
+def linear_regression(x,y):
+
+  x_mean=np.mean(x)
+  y_mean=np.mean(y)
+
+  numerator=np.sum((x-x_mean)*(y-y_mean))
+  denominator=np.sum((x-x_mean)**2)
+
+  slope=numerator/denominator
+  intercept=y_mean-slope*x_mean
+
+  return slope,intercept
+
+#fit model
+slope,intercept=linear_regression(sizes,prices)
+
+#now predict the price of random size
+
+random_size=17
+price_predicted=slope*random_size+intercept
+
+print(f"The predicted price  is ${price_predicted:.2f}")
